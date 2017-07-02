@@ -40,6 +40,7 @@ A Node.js and MongoDB application that stores scraped news from the NY Times and
 	* [body-parser](https://www.npmjs.com/package/body-parser)
 	* [request](https://www.npmjs.com/package/request)
 	* [morgan](https://www.npmjs.com/package/morgan) 
+	* [dotenv](https://www.npmjs.com/package/dotenv) 
 
 
 ## <a name="installation"></a> :dvd: Installation and Usage 
