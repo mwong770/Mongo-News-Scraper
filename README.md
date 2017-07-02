@@ -20,7 +20,8 @@ A Node.js and MongoDB application that stores scraped news from the NY Times and
 
 ## <a name="technologies-used"></a> :computer: Technologies Used 
  
-* MongoDB 
+* MongoDB
+* mLab MongoDB (heroku add-on) 
 * Node.js
 * Express.js
 * Cheerio
