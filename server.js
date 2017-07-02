@@ -50,12 +50,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // hooks mongoose with the mongodb database (our db: newsscraper)
-if (process.env.MONGODB_URI) {
- 	mongoose.connect("mongodb:// heroku connection here......."); //******************** ENTER HEROKU ACCT
-} else {
-
-   mongoose.connect("mongodb://localhost/newsscraper");
-}
+var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
+mongoose.connect(mongoConfig);
 
 // saves our mongoose connection to db
 var db = mongoose.connection;
@@ -68,7 +64,6 @@ db.on("error", function(error) {
 // logs a success message once logged in to the db through mongoose
 db.once("open", function() {
   console.log("Mongoose connection successful.");
-  db.dropDatabase();//******************************************************* REMOVE BEFORE DEPLOY
 });
 
 // handles routes
