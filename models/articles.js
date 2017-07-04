@@ -24,14 +24,14 @@ var ArticlesSchema = new Schema ({
   img: {
     type: String,
   },
-  saved: {
-    type: Boolean,
-    default: false
+  status: {
+    type: Number,
+    default: 0
   },
-  comments: {
+  notes: {
     // saves one comment's ObjectID
     type: Schema.Types.ObjectId,
-    ref: "Comments"
+    ref: "Notes"
   }
 });
 

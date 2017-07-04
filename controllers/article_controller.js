@@ -6,16 +6,16 @@ var cheerio = require("cheerio");
 
 // models
 var Articles = require("../models/articles.js");
-var Comments = require("../models/comments.js");
+var Notes = require("../models/notes.js");
 
 var router = express.Router();
 
 // grabs an article by it's ObjectId
 router.get("/articles/:id", function(req, res) {
-  // queries the db to find the matching one in our db...
+  // queries the db to find the article with a matching id 
   Articles.findOne({ "_id": req.params.id })
   // populates all of the notes associated with it
-  .populate("comments")
+  .populate("notes")
   // executes the query
   .exec(function(error, doc) {
     // logs any errors
@@ -32,18 +32,17 @@ router.get("/articles/:id", function(req, res) {
 // creates a new note or replaces an existing note
 router.post("/articles/:id", function(req, res) {
   // creates a new note and passes the req.body to the entry
-  var newComment = new Comments(req.body);
-  console.log(req.body);
+  var newNote = new Notes(req.body);
   // saves the new note the db
-  newComment.save(function(error, doc) {
+  newNote.save(function(error, doc) {
     // logs any errors
     if (error) {
       console.log(error);
     }
     else {
       // uses the article id to find and update it's note
-      Articles.findOneAndUpdate({ "_id": req.params.id }, { "comments": doc._id })
-      .populate("comments")
+      Articles.findOneAndUpdate({ "_id": req.params.id }, { "notes": doc._id })
+      .populate("notes")
       // executes the above query
       .exec(function(err, doc) {
         // logs any errors
@@ -52,7 +51,6 @@ router.post("/articles/:id", function(req, res) {
         }
         else {
           // or sends the document to the browser
-          console.log(doc);
           res.send(doc);
         }
       });
@@ -100,12 +98,12 @@ router.get("/", function(req, res) {
             }
         }
 
-    });// ends request to NPR
-});// ends router
+    });
+});
 
-// gets articles from db and displays them
+// gets unsaved, unhidden articles from db and displays them
 router.get("/articles", function(req, res) {
-    Articles.find({"saved": false}, function(err, data){
+    Articles.find({"status": 0}, function(err, data){
         if (err){ 
             console.log(err);
         } else {
@@ -114,19 +112,31 @@ router.get("/articles", function(req, res) {
     });
 });
 
-router.get("/hidden", function(req, res) {
-    Articles.find({"saved": true}, function(err, data){
+// gets saved articles from db and displays them
+router.get("/saved", function(req, res) {
+    Articles.find({"status": 1}, function(err, data){
         if (err){ 
             console.log(err);
         } else {
-            res.render("saved-page", {articles: data});
+            res.render("saved_page", {articles: data});
         }
     });
 });
 
+// gets hidden articles from db and displays them
+router.get("/hidden", function(req, res) {
+    Articles.find({"status": 2}, function(err, data){
+        if (err){ 
+            console.log(err);
+        } else {
+            res.render("hidden_page", {articles: data});
+        }
+    });
+});
 
-router.post("/delete", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"saved": true}})
+// assigns saved status to article 
+router.post("/save", function(req, res) {
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 1}, "returnNewDocument": true})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
@@ -136,8 +146,35 @@ router.post("/delete", function(req, res) {
         });
 });
 
-router.post("/undelete", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"saved": false}, "returnNewDocument": true})
+// assigns hidden status to article
+router.post("/hide", function(req, res) {
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 2}, "returnNewDocument": true})
+        .exec(function(err, data) {
+            if(err) {
+                console.log(err);
+            }else {
+                res.render("index", {articles: data});
+            }
+        });
+});
+
+
+
+// removes articles from saved status and displays them on index page
+router.post("/unsave", function(req, res) {
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}, "returnNewDocument": true})
+        .exec(function(err, data) {
+            if(err) {
+                console.log(err);
+            }else {
+                res.render("index", {articles: data});
+            }
+        });
+});
+
+// removes articles from hidden status and displays them on index page
+router.post("/unhide", function(req, res) {
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}, "returnNewDocument": true})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);

@@ -1,6 +1,6 @@
 var currentURL = window.location.origin;
 
-$(document).on("click", ".comments", function() {
+$(document).on("click", ".notes", function() {
   // empties the notes from the note section
   $("#notes").empty();
   // saves the article id
@@ -15,17 +15,17 @@ $(document).on("click", ".comments", function() {
     .done(function(data) {
       console.log(data);
       $("#notes").append("<h5>" + data.title + "</h5>");
-      $("#notes").append("<input id='titleinput' name='title' >");
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-      if (data.comments) {
-        $("#titleinput").val(data.comments.title);
-        $("#bodyinput").val(data.comments.body);
+      $("#notes").append("<input id='titleInput' name='title' >");
+      $("#notes").append("<textarea id='bodyInput' name='body'></textarea>");
+      $("#notes").append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
+      if (data.notes) {
+        $("#titleInput").val(data.notes.title);
+        $("#bodyInput").val(data.notes.body);
       }
     });
 });
 
-$(document).on("click", "#savenote", function() {
+$(document).on("click", "#saveNote", function() {
   // grabs the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -35,9 +35,9 @@ $(document).on("click", "#savenote", function() {
     url: "/articles/" + thisId,
     data: {
       // captures  from title input
-      title: $("#titleinput").val(),
+      title: $("#titleInput").val(),
       // takes values from note textarea
-      body: $("#bodyinput").val()
+      body: $("#bodyInput").val()
     }
   })
     .done(function(data) {
@@ -48,65 +48,75 @@ $(document).on("click", "#savenote", function() {
     });
 });
 
-$(document).on("click", ".deleteArticle", function() {
+$(document).on("click", ".hideArticle", function() {
     var articleId = $(this).attr("data-id");
-    var articleToDelete = $(this).parent().parent().parent();
-    console.log(articleToDelete);
+    var articleToHide = $(this).parent().parent().parent();
     $.post({
-      url: currentURL + "/delete",
+      url: currentURL + "/hide",
       data: { 
         articleId: articleId
       }
       
     }).done(function(data) {
       console.log(data);
-      articleToDelete.remove();
+      articleToHide.remove();
 
     }).fail(function(error) { 
       console.log(error);
     })
 });
 
-$(document).on("click", ".undeleteArticle", function() {
+$(document).on("click", ".unhideArticle", function() {
     var articleId = $(this).attr("data-id");
-    var articleToDelete = $(this).parent().parent().parent();
-    console.log(articleToDelete);
+    var articleToUnhide = $(this).parent().parent().parent();
     $.post({
-      url: currentURL + "/undelete",
+      url: currentURL + "/unhide",
       data: { 
         articleId: articleId
       }
       
     }).done(function(data) {
       console.log(data);
-      articleToDelete.remove();
+      articleToUnhide.remove();
 
     }).fail(function(error) { 
       console.log(error);
     })
 });
 
-
-// $(document).on("click", ".deleteArticle", function() {
-//     var articleId = $(this).attr("data-id");
-//     var articleToDelete = $(this).parent().parent().parent();
-//     console.log("********* ARTICLE TO DELETE ***********");
-//     console.log(articleToDelete);
-//     $.post({
-//       url: currentURL + "/delete",
-//       data: { 
-//         articleId: articleId
-//       }
+$(document).on("click", ".saveArticle", function() {
+    var articleId = $(this).attr("data-id");
+    var articleToSave = $(this).parent().parent().parent();
+    $.post({
+      url: currentURL + "/save",
+      data: { 
+        articleId: articleId
+      }
       
-//     }).done(function(data) {
-//       console.log("************ BACK FROM POST /DELETE IN PUBLIC JS");
-//       // console.log(data);
-//       // Remove note from savedNotesDiv
-//       articleToDelete.remove();
+    }).done(function(data) {
+      console.log(data);
+      articleToSave.remove();
 
-//     }).fail(function(error) { 
-//       console.log("**********ARTICLE COULD NOT BE DELETED.**********");
-//       console.log(error);
-//     })
-// });
+    }).fail(function(error) { 
+      console.log(error);
+    })
+});
+
+$(document).on("click", ".unsaveArticle", function() {
+    var articleId = $(this).attr("data-id");
+    var articleToUnsave = $(this).parent().parent().parent();
+    $.post({
+      url: currentURL + "/unsave",
+      data: { 
+        articleId: articleId
+      }
+      
+    }).done(function(data) {
+      console.log(data);
+      articleToUnsave.remove();
+
+    }).fail(function(error) { 
+      console.log(error);
+    })
+});
 

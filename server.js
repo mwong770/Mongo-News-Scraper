@@ -12,7 +12,7 @@ var cheerio = require("cheerio");
 
 // models needed
 var Articles = require("./models/articles.js");
-var Comments = require("./models/comments.js");
+var Comments = require("./models/notes.js");
 
 // imports routes
 var routes = require("./controllers/article_controller.js");
@@ -50,7 +50,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // hooks mongoose with the mongodb database (our db: newsscraper)
-var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
+var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/nprscraper";
 mongoose.connect(mongoConfig);
 
 // saves our mongoose connection to db

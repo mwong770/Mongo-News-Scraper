@@ -3,10 +3,11 @@
 
 	<nav class="blue-grey darken-2" role="navigation">
 	  <div class="nav-wrapper">
-	    <a  id="logo-container" href="/" class="brand-logo left"> NPR Scraped </a>
+	    <a  id="logo-container" href="/" class="brand-logo left"> npr Scraped </a>
 	    <ul id="nav-mobile" class="right hide-on-med-and-down">
 	    	<li><a href="/"> Home </a></li>
 	        <li><a href="/"> Scrape New Articles </a></li>
+	        <li><a href="/saved"> Saved </a></li>
 	        <li><a href="/hidden"> Hidden </a></li>
 	    </ul>
 	  </div>
@@ -18,9 +19,9 @@
 	<div class="row">
 
       	<div class="col s9">
-      		<span id="articlesTitle"> HIDDEN STORIES </span>
+      		<span id="articlesTitle"> SAVED STORIES </span>
 			<div id="articlesDiv">
-				{{> savedArticles }}
+				{{> saved_articles }}
 			</div>
 
 		</div>
