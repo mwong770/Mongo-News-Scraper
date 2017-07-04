@@ -126,64 +126,26 @@ router.get("/hidden", function(req, res) {
 
 
 router.post("/delete", function(req, res) {
-        // Get articles with reference to that note and pop from array
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"saved": true}, "returnNewDocument": true})
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"saved": true}})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
             }else {
-                // Delete note with that id
-                // Articles.findByIdAndRemove(req.body.articleId).exec(function(err, data) {
-                //     if(err) {
-                //         console.log(err);
-                //     }else {
-                //         res.send(data);
-                //     }
-                // });
                 res.render("index", {articles: data});
             }
         });
 });
 
 router.post("/undelete", function(req, res) {
-        // Get articles with reference to that note and pop from array
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"saved": false}, "returnNewDocument": true})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
             }else {
-                // Delete note with that id
-                // Articles.findByIdAndRemove(req.body.articleId).exec(function(err, data) {
-                //     if(err) {
-                //         console.log(err);
-                //     }else {
-                //         res.send(data);
-                //     }
-                // });
                 res.render("index", {articles: data});
             }
         });
 });
-
-// // deletes a note from note model and it's article reference
-// router.post("/delete", function(req, res) {
-//         // Get articles with reference to that note and pop from array
-//     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$pull : {"articles": req.body.articleId}})
-//         .exec(function(err, data) {
-//             if(err) {
-//                 console.log(err);
-//             }else {
-//                 // Delete note with that id
-//                 Articles.findByIdAndRemove(req.body.articleId).exec(function(err, data) {
-//                     if(err) {
-//                         console.log(err);
-//                     }else {
-//                         res.send(data);
-//                     }
-//                 });
-//             }
-//         });
-// });
 
 // exports routes
 module.exports = router;
