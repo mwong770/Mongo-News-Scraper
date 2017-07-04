@@ -71,7 +71,7 @@ router.get("/", function(req, res) {
         // grabs requested items from sections with classes .item.has-image
         $(".item.has-image").each(function(i, element) {
         	// limits the results to be saved
-            if (i >= 4) {
+            if (i >= 15) {
                return false;
             }
         	// empties result object
