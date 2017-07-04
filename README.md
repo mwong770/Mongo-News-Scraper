@@ -1,6 +1,6 @@
 # Mongo-News-Scraper
 
-A Node.js and MongoDB application that stores scraped news from the NY Times and lets users leave comments on the articles
+A Node.js and MongoDB application that stores scraped news from www.npr.org and lets users leave comments on the articles
 
 [Check Out Mongo News Scraper](https://mongo-news-scraper-1.herokuapp.com/)
 
