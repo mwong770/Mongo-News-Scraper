@@ -48,4 +48,65 @@ $(document).on("click", "#savenote", function() {
     });
 });
 
+$(document).on("click", ".deleteArticle", function() {
+    var articleId = $(this).attr("data-id");
+    var articleToDelete = $(this).parent().parent().parent();
+    console.log(articleToDelete);
+    $.post({
+      url: currentURL + "/delete",
+      data: { 
+        articleId: articleId
+      }
+      
+    }).done(function(data) {
+      console.log(data);
+      articleToDelete.remove();
+
+    }).fail(function(error) { 
+      console.log(error);
+    })
+});
+
+$(document).on("click", ".undeleteArticle", function() {
+    var articleId = $(this).attr("data-id");
+    var articleToDelete = $(this).parent().parent().parent();
+    console.log(articleToDelete);
+    $.post({
+      url: currentURL + "/undelete",
+      data: { 
+        articleId: articleId
+      }
+      
+    }).done(function(data) {
+      console.log(data);
+      articleToDelete.remove();
+
+    }).fail(function(error) { 
+      console.log(error);
+    })
+});
+
+
+// $(document).on("click", ".deleteArticle", function() {
+//     var articleId = $(this).attr("data-id");
+//     var articleToDelete = $(this).parent().parent().parent();
+//     console.log("********* ARTICLE TO DELETE ***********");
+//     console.log(articleToDelete);
+//     $.post({
+//       url: currentURL + "/delete",
+//       data: { 
+//         articleId: articleId
+//       }
+      
+//     }).done(function(data) {
+//       console.log("************ BACK FROM POST /DELETE IN PUBLIC JS");
+//       // console.log(data);
+//       // Remove note from savedNotesDiv
+//       articleToDelete.remove();
+
+//     }).fail(function(error) { 
+//       console.log("**********ARTICLE COULD NOT BE DELETED.**********");
+//       console.log(error);
+//     })
+// });
 
