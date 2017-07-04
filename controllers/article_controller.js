@@ -68,10 +68,6 @@ router.get("/", function(req, res) {
         var entry = [];
         // grabs requested items from sections with classes .item.has-image
         $(".item.has-image").each(function(i, element) {
-        	// limits the results to be saved at one time
-            if (i >= 10) {
-               return false;
-            }
         	// empties result object
         	var result = {};
             // places selected element properties into result object
