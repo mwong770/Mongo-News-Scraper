@@ -50,7 +50,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // hooks mongoose with the mongodb database (our db: newsscraper)
-var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/newsscraper3";
+var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
 mongoose.connect(mongoConfig);
 
 // saves our mongoose connection to db
