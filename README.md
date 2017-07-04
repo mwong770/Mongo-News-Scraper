@@ -51,7 +51,7 @@ A Node.js and MongoDB application that stores scraped news from www.npr.org and 
 * On your terminal, run the command 'mongod --dbpath ~/DATA/DB' (modify based on the path you set)
 * On a separate terminal window, navigate to the folder where the repository is located.
 * Run the command `npm install` to download all required dependencies.
-* Run the command `npm server.js` to start the server.
+* Run the command `node server.js` to start the server.
 * Type 'localhost: 3000' on a browser to view the app.
 
 
