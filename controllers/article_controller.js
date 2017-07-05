@@ -79,7 +79,7 @@ router.get("/", function(req, res) {
             // creates an entry object of the Articles model  
             entry.push(new Articles(result)); 
         });
-        for (var i = 0; i < entry.length; i++){
+        for (var i = 0; i < entry.length; i++) {
             entry[i].save(function(err, data) {
                 if (err) {
                     console.log(err);
@@ -89,7 +89,7 @@ router.get("/", function(req, res) {
                 }
             });
             // retrieves articles from db only after all entries have been made
-            if (i === (entry.length - 1)){
+            if (i === (entry.length - 1)) {
                 res.redirect("/articles");
             }
         }
@@ -99,7 +99,7 @@ router.get("/", function(req, res) {
 
 // gets unsaved, unhidden articles from db and displays them
 router.get("/articles", function(req, res) {
-    Articles.find({"status": 0}, function(err, data){
+    Articles.find({"status": 0}, function(err, data) {
         if (err){ 
             console.log(err);
         } else {
@@ -110,8 +110,8 @@ router.get("/articles", function(req, res) {
 
 // gets saved articles from db and displays them
 router.get("/saved", function(req, res) {
-    Articles.find({"status": 1}, function(err, data){
-        if (err){ 
+    Articles.find({"status": 1}, function(err, data) {
+        if (err) { 
             console.log(err);
         } else {
             res.render("saved_page", {articles: data});
@@ -121,8 +121,8 @@ router.get("/saved", function(req, res) {
 
 // gets hidden articles from db and displays them
 router.get("/hidden", function(req, res) {
-    Articles.find({"status": 2}, function(err, data){
-        if (err){ 
+    Articles.find({"status": 2}, function(err, data) {
+        if (err) { 
             console.log(err);
         } else {
             res.render("hidden_page", {articles: data});
@@ -133,25 +133,25 @@ router.get("/hidden", function(req, res) {
 // assigns saved status to article 
 router.post("/save", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 1}})
-        .exec(function(err, data) {
-            if(err) {
-                console.log(err);
-            }else {
-                res.render("index", {articles: data});
-            }
-        });
+    .exec(function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", {articles: data});
+        }
+    });
 });
 
 // assigns hidden status to article
 router.post("/hide", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 2}})
-        .exec(function(err, data) {
-            if(err) {
-                console.log(err);
-            }else {
-                res.render("index", {articles: data});
-            }
-        });
+    .exec(function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", {articles: data});
+        }
+    });
 });
 
 
@@ -159,25 +159,25 @@ router.post("/hide", function(req, res) {
 // removes articles from saved status and displays them on index page
 router.post("/unsave", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
-        .exec(function(err, data) {
-            if(err) {
-                console.log(err);
-            }else {
-                res.render("index", {articles: data});
-            }
-        });
+    .exec(function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", {articles: data});
+        }
+    });
 });
 
 // removes articles from hidden status and displays them on index page
 router.post("/unhide", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
-        .exec(function(err, data) {
-            if(err) {
-                console.log(err);
-            }else {
-                res.render("index", {articles: data});
-            }
-        });
+    .exec(function(err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", {articles: data});
+        }
+    });
 });
 
 // exports routes
