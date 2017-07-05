@@ -14,9 +14,9 @@ $(document).on("click", ".notes", function() {
     // adds the note information to the page
     .done(function(data) {
         console.log(data);
-        $("#notes").append("<h5>" + data.title + "</h5>");
-        $("#notes").append("<input id='titleInput' name='title' >");
-        $("#notes").append("<textarea id='bodyInput' name='body'></textarea>");
+        $("#notes").append("<h5 class='notesArticle'>" + data.title + "</h5>");
+        $("#notes").append("<input id='titleInput' name='title' placeholder='enter a note title'>");
+        $("#notes").append("<textarea id='bodyInput' name='noteBody' placeholder='enter your notes'></textarea>");
         $("#notes").append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
         if (data.notes) {
             $("#titleInput").val(data.notes.title);

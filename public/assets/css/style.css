@@ -7,10 +7,6 @@
 		margin-bottom: 30px;
 	}
 
-	.body {
-		margin: 0;
-	}
-
 	#articlesDiv {
 		border-top: solid #455a64 2px;
 	}
@@ -18,7 +14,7 @@
 	#articlesSection {
         display: inline-block;
         overflow: auto;
-        width: 85%;
+        width: 80%;
         height: 700px;
         margin-left: -100px;
     }
@@ -63,7 +59,26 @@
 		padding-left: 5px;
 	}
 
+	.notesArticle {
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.noteBody {
+		margin: 0;
+	}
+
 	.input-field {
 		margin-top: -10px;
+	}
+
+	textarea {
+		height: 200px;
+		padding: 10px;
+	}
+
+	#saveNote {
+		color: #1976d2;
+		background-color: #e0e0e0;
 	}
 
