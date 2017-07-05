@@ -61,7 +61,7 @@ A Node.js and MongoDB application that stores scraped news from www.npr.org and 
 * Read the latest scraped articles from NPR when first entering the site
 * Read the headline, summary and byline of newly scraped articles
 * Click "Read" to read the full article on NPR's website
-* Leave and read comments on articles
+* Leave and read notes on articles
 * Save and unsave articles
 * Click "Saved" to see only saved articles
 * Hide and unhide articles
