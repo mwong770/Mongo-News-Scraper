@@ -82,3 +82,8 @@
 		background-color: #e0e0e0;
 	}
 
+	#saveNote:hover {
+		color: white;
+		background-color: #455a64;
+	}
+
