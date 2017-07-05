@@ -83,7 +83,7 @@ router.get("/", function(req, res) {
             entry[i].save(function(err, data) {
                 if (err) {
                     console.log(err);
-                }
+                } 
                 else {
                     console.log(data);
                 }
@@ -132,7 +132,7 @@ router.get("/hidden", function(req, res) {
 
 // assigns saved status to article 
 router.post("/save", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 1}, "returnNewDocument": true})
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 1}})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
@@ -144,7 +144,7 @@ router.post("/save", function(req, res) {
 
 // assigns hidden status to article
 router.post("/hide", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 2}, "returnNewDocument": true})
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 2}})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
@@ -158,7 +158,7 @@ router.post("/hide", function(req, res) {
 
 // removes articles from saved status and displays them on index page
 router.post("/unsave", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}, "returnNewDocument": true})
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
@@ -170,7 +170,7 @@ router.post("/unsave", function(req, res) {
 
 // removes articles from hidden status and displays them on index page
 router.post("/unhide", function(req, res) {
-    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}, "returnNewDocument": true})
+    Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
         .exec(function(err, data) {
             if(err) {
                 console.log(err);
