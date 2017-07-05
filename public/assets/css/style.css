@@ -4,7 +4,7 @@
 		margin-left: -100px;
 	}
 
-	#commentsDiv {
+	#notesDiv {
 		border-top: solid #455a64 2px;
 		margin-right: -100px;
 	}
@@ -15,7 +15,7 @@
 		padding-left: 5px;
 	}
 
-	#commentsTitle {
+	#notesTitle {
 		margin-right: -100px;
 		font-size: 20px;
 	}
