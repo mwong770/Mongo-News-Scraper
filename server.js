@@ -37,10 +37,8 @@ app.use(bodyParser.urlencoded({
   	extended: false
 }));
 
-app.use(express.static("public"));
-
 // makes public a static dir
-// app.use(express.static(process.cwd() || __dirname + '/public'));
+app.use(express.static(process.cwd() + "/public"));
 
 // sets Handlebars
 var exphbs = require("express-handlebars");
@@ -49,7 +47,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// hooks mongoose with the mongodb database (our db: newsscraper)
+// hooks mongoose with the mongodb database (our db: nprnewsscraper)
 var mongoConfig = process.env.MONGODB_URI || "mongodb://localhost/nprnewsscraper";
 mongoose.connect(mongoConfig);
 
