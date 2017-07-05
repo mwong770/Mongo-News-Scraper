@@ -14,7 +14,7 @@
 	#articlesSection {
         display: inline-block;
         overflow: auto;
-        width: 80%;
+        width: 85%;
         height: 700px;
         margin-left: -100px;
     }
@@ -50,7 +50,7 @@
 
     #notesSection {
         float: right;
-        width: 25%;
+        width: 24%;
     }
 
 	#notesTitle {
@@ -85,5 +85,11 @@
 	#saveNote:hover {
 		color: white;
 		background-color: #455a64;
+	}
+
+	footer {
+	    text-align: center;
+	    height: 60px;
+	    padding-top: 20px;
 	}
 
