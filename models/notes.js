@@ -7,12 +7,12 @@ var Schema = mongoose.Schema;
 
 // creates Comments schema
 var NotesSchema = new Schema({
-  title: {
-    type: String
-  },
-  body: {
-    type: String
-  }
+	title: {
+	    type: String
+	},
+	body: {
+	    type: String
+	}
 });
 
 // creates Comments model

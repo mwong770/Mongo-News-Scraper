@@ -12,50 +12,50 @@ var router = express.Router();
 
 // grabs an article by it's ObjectId
 router.get("/articles/:id", function(req, res) {
-  // queries the db to find the article with a matching id 
-  Articles.findOne({ "_id": req.params.id })
-  // populates all of the notes associated with it
-  .populate("notes")
-  // executes the query
-  .exec(function(error, doc) {
-    // logs any errors
-    if (error) {
-      console.log(error);
-    }
-    // sends doc to the browser as a json object
-    else {
-      res.json(doc);
-    }
-  });
+    // queries the db to find the article with a matching id 
+    Articles.findOne({ "_id": req.params.id })
+    // populates all of the notes associated with it
+    .populate("notes")
+    // executes the query
+    .exec(function(error, doc) {
+        // logs any errors
+        if (error) {
+            console.log(error);
+        }
+        // sends doc to the browser as a json object
+        else {
+            res.json(doc);
+        }
+    });
 });
 
 // creates a new note or replaces an existing note
 router.post("/articles/:id", function(req, res) {
-  // creates a new note and passes the req.body to the entry
-  var newNote = new Notes(req.body);
-  // saves the new note the db
-  newNote.save(function(error, doc) {
-    // logs any errors
-    if (error) {
-      console.log(error);
-    }
-    else {
-      // uses the article id to find and update it's note
-      Articles.findOneAndUpdate({ "_id": req.params.id }, { "notes": doc._id })
-      .populate("notes")
-      // executes the above query
-      .exec(function(err, doc) {
+    // creates a new note and passes the req.body to the entry
+    var newNote = new Notes(req.body);
+    // saves the new note the db
+    newNote.save(function(error, doc) {
         // logs any errors
-        if (err) {
-          console.log(err);
+        if (error) {
+            console.log(error);
         }
         else {
-          // or sends the document to the browser
-          res.send(doc);
+            // uses the article id to find and update it's note
+            Articles.findOneAndUpdate({ "_id": req.params.id }, { "notes": doc._id })
+            .populate("notes")
+            // executes the above query
+            .exec(function(err, doc) {
+                 // logs any errors
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    // or sends the document to the browser
+                    res.send(doc);
+                }
+            });
         }
-      });
-    }
-  });
+    });
 });
 
 // scrapes and displays news articles 

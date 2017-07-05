@@ -58,14 +58,16 @@ A Node.js and MongoDB application that stores scraped news from www.npr.org and 
 ## <a name="features"></a> :boom: Features
 
 * Read the latest scraped articles from npr when first entering the site
-* Click a button to rescrape articles from npr's site
 * Read the headline, summary and byline of newly scraped articles
-* Click a button to read the full article on npr's website
+* Click "Read" to read the full article on npr's website
 * Leave and read comments on articles
 * Save and unsave articles
-* Click 'Save' to see only saved articles
-* See unsaved articles with scraped articles
+* Click "Saved" to see only saved articles
+* Hide and unhide articles
+* Click "Hidden" to see only hidden articles
+* Click "Home" or "Scrape New Articles" to see unsaved and unhidden articles 
 * Delete any comments
+* Click "Scrape New Articles" to rescrape articles from npr's site
 
 
 ## <a name="developer"></a> :bust_in_silhouette: Developer

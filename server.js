@@ -34,7 +34,7 @@ app.use(logger("dev"));
 
 // parses data
 app.use(bodyParser.urlencoded({
-  extended: false
+  	extended: false
 }));
 
 app.use(express.static("public"));
@@ -58,12 +58,12 @@ var db = mongoose.connection;
 
 // shows any mongoose errors
 db.on("error", function(error) {
-  console.log("Mongoose Error: ", error);
+  	console.log("Mongoose Error: ", error);
 });
 
 // logs a success message once logged in to the db through mongoose
 db.once("open", function() {
-  console.log("Mongoose connection successful.");
+  	console.log("Mongoose connection successful.");
 });
 
 // handles routes
