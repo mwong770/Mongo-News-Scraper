@@ -44,7 +44,7 @@
 
 	.card-content {
 		height: 216px;
-		overflow: hide;
+		overflow: scroll;
 	}
 
 	#notesDiv {
