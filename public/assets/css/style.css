@@ -1,3 +1,12 @@
+	html {
+		position: relative;
+		min-height: 100%;
+	}
+
+	body {
+		margin: 0 0 85px 0;
+	}
+
 	nav {
 		padding-right: 70px;
 		padding-left: 70px;
@@ -15,7 +24,7 @@
         display: inline-block;
         overflow: auto;
         width: 85%;
-        height: 700px;
+        max-height: 700px;
         margin-left: -100px;
     }
 
@@ -91,5 +100,8 @@
 	    text-align: center;
 	    height: 60px;
 	    padding-top: 20px;
+	    position: absolute;
+		bottom: 0;
+		width: 100%;
 	}
 
