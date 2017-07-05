@@ -1,7 +1,6 @@
 
 	#articlesDiv {
 		border-top: solid #455a64 2px;
-		margin-left: -100px;
 	}
 
 	#notesDiv {
@@ -9,15 +8,28 @@
 		margin-right: -100px;
 	}
 
+	#articlesSection {
+        display: inline-block;
+        overflow: auto;
+        width: 80%;
+        height: 700px;
+        margin-left: -100px;
+    }
+
+    #notesSection {
+        float: right;
+        width: 25%;
+    }
+
 	#articlesTitle {
 		font-size: 20px;
-		margin-left: -100px;
 		padding-left: 5px;
 	}
 
 	#notesTitle {
 		margin-right: -100px;
 		font-size: 20px;
+		padding-left: 5px;
 	}
 
 	nav {
