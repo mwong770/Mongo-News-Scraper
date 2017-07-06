@@ -77,7 +77,7 @@ router.get("/", function(req, res) {
             result.img = $(this).children(".item-image").find("a").find("img").attr("src");
             result.link = $(this).children(".item-info").find("h2.title").find("a").attr("href");
             // creates an entry object of the Articles model  
-            entry.push(new Articles(result)); 
+            entry.push(new Articles(result));             
         });
         for (var i = 0; i < entry.length; i++) {
             entry[i].save(function(err, data) {
@@ -103,7 +103,7 @@ router.get("/articles", function(req, res) {
         if (err){ 
             console.log(err);
         } else {
-            res.render("index", {articles: data});
+            res.render("index", {articles: data, current: true});
         }
     });
 });
@@ -114,7 +114,7 @@ router.get("/saved", function(req, res) {
         if (err) { 
             console.log(err);
         } else {
-            res.render("saved_page", {articles: data});
+            res.render("index", {articles: data, saved: true});
         }
     });
 });
@@ -125,7 +125,7 @@ router.get("/hidden", function(req, res) {
         if (err) { 
             console.log(err);
         } else {
-            res.render("hidden_page", {articles: data});
+            res.render("index", {articles: data, hidden: true});
         }
     });
 });
@@ -153,8 +153,6 @@ router.post("/hide", function(req, res) {
         }
     });
 });
-
-
 
 // removes articles from saved status and displays them on index page
 router.post("/unsave", function(req, res) {

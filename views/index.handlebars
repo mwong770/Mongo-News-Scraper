@@ -35,12 +35,23 @@
 <div class="container">
 	<div class="row">
 
-		<div id="articlesSection" class="col s9">
-      		<span id="articlesTitle"> CURRENT STORIES </span>
-			<div id="articlesDiv">
-				{{> articles }}
-			</div>
-		</div>
+		{{#if current}}
+
+			{{> current_articles }}
+
+		{{/if}}
+
+		{{#if saved}}
+					
+			{{> saved_articles }}
+
+		{{/if}}
+
+		{{#if hidden}}
+
+			{{> hidden_articles }}
+
+		{{/if}}
 
 		<div id="notesSection" class="col s3">
 			<span id="notesTitle">NOTES</span>
