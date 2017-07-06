@@ -16,7 +16,6 @@ $(document).on("click", ".notes", function() {
     })
     // adds the note information to the page
     .done(function(data) {
-        console.log(data);
         $("#notes").append("<h5 class='notesArticle'>" + data.title + "</h5>");
         $("#notes").append("<input id='titleInput' name='title' placeholder='enter a note title'>");
         $("#notes").append("<textarea id='bodyInput' name='noteBody' placeholder='enter your notes'></textarea>");
