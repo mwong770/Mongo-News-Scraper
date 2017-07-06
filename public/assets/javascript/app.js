@@ -1,19 +1,5 @@
 
-// $(".button-collapse").sideNav();
 $(".button-collapse").dropdown();
-// $(".dropdown-button").dropdown();
-
-  // $('.dropdown-button').dropdown({
-  //     inDuration: 300,
-  //     outDuration: 225,
-  //     constrainWidth: false, // Does not change width of dropdown to that of the activator
-  //     hover: true, // Activate on hover
-  //     gutter: 0, // Spacing from edge
-  //     belowOrigin: false, // Displays dropdown below the button
-  //     alignment: 'left', // Displays dropdown with edge aligned to the left of button
-  //     stopPropagation: false // Stops event propagation
-  //   }
-  // );
 
 var currentURL = window.location.origin;
 
@@ -34,7 +20,7 @@ $(document).on("click", ".notes", function() {
         $("#notes").append("<h5 class='notesArticle'>" + data.title + "</h5>");
         $("#notes").append("<input id='titleInput' name='title' placeholder='enter a note title'>");
         $("#notes").append("<textarea id='bodyInput' name='noteBody' placeholder='enter your notes'></textarea>");
-        $("#notes").append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
+        $("#notes").append("<button data-id='" + data._id + "' id='saveNote'> Save </button>");
         if (data.notes) {
             $("#titleInput").val(data.notes.title);
             $("#bodyInput").val(data.notes.body);
