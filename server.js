@@ -24,7 +24,7 @@ dotenv.load();
 mongoose.Promise = Promise;
 
 // sets port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3003;
 
 // initializes express
 var app = express();
