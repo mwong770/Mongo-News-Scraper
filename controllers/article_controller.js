@@ -137,7 +137,7 @@ router.post("/save", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {articles: data});
+            res.render("index");
         }
     });
 });
@@ -149,31 +149,31 @@ router.post("/hide", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {articles: data});
+            res.render("index");
         }
     });
 });
 
-// removes articles from saved status and displays them on index page
+// removes articles from saved status 
 router.post("/unsave", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
     .exec(function(err, data) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {articles: data});
+            res.render("index");
         }
     });
 });
 
-// removes articles from hidden status and displays them on index page
+// removes articles from hidden status 
 router.post("/unhide", function(req, res) {
     Articles.findOneAndUpdate({"_id": req.body.articleId}, {$set : {"status": 0}})
     .exec(function(err, data) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {articles: data});
+            res.render("index");
         }
     });
 });
