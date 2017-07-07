@@ -137,7 +137,7 @@ router.post("/save", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index");
+            res.send("Post successful");
         }
     });
 });
@@ -149,7 +149,7 @@ router.post("/hide", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index");
+            res.send("Post successful");
         }
     });
 });
@@ -161,7 +161,7 @@ router.post("/unsave", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index");
+            res.send("Post successful");
         }
     });
 });
@@ -173,7 +173,7 @@ router.post("/unhide", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("index");
+            res.send("Post successful");
         }
     });
 });
