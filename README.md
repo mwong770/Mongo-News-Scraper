@@ -24,8 +24,6 @@ A Node.js and MongoDB application that stores scraped news from www.npr.org and 
 * mLab (Heroku add-on)
 * Robo 3T 
 * Node.js
-* Express.js
-* Cheerio
 * Heroku
 * JavaScript
 * jQuery
